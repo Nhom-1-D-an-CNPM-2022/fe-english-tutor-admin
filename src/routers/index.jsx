@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HeaderFooterLayout } from '../layouts';
+import { HeaderFooterLayout, BlankLayout } from '../layouts';
 import { PublicRouter } from './PublicRouter';
 
 import { Header, Footer, Nav } from '../components';
-import { Home } from '../containers';
+import { Home, Login } from '../containers';
 
 export const Routers = () => {
   return (
@@ -21,6 +21,16 @@ export const Routers = () => {
               header={Header}
               footer={Footer}
               nav={Nav}
+            />
+          }
+        />
+        <Route
+          exact={true}
+          path={'/login'}
+          element={
+            <PublicRouter
+              component={Login}
+              layout={BlankLayout}
             />
           }
         />
