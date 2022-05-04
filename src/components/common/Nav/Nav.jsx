@@ -5,14 +5,12 @@ import {
   Drawer,
   Box,
   Avatar,
-  Typography,
   Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { deepPurple } from '@mui/material/colors';
 import CottageIcon from '@mui/icons-material/Cottage';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
@@ -43,15 +41,14 @@ export const Nav = () => {
     >
       <div className={`${className}__content`}>
         <Box className={`${className}__logo`}>
-          <Box className={`${className}__logo--content`}>
-            <Avatar sx={{ bgcolor: deepPurple[500], fontSize: 14 }}>
-              AK
-            </Avatar>
-            <Box className={`${className}__logo--title`}>
-              <Typography variant="button" gutterBottom component="h6">
-                Trang quản lý Cambly
-              </Typography>
+          <Box className={`${className}__logo--icon`}>
+            <Avatar alt="Remy Sharp" src="https://cra.cremawork.com/assets/images/avatar/A11.jpg" />
+          </Box>
+          <Box className={`${className}__logo--info`}>
+            <Box className={`${className}__logo--name`}>
+              <Box className={`${className}__logo--text`}>Anh Kiem</Box>
             </Box>
+            <Box className={`${className}__logo--solo`}>Admin</Box>
           </Box>
         </Box>
         <Divider />
