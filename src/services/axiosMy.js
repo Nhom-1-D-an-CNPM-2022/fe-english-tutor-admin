@@ -7,7 +7,7 @@ const axiosMy = axios.create({
   baseURL: baseURL,
   headers: {
     'content-type': 'application/json',
-    Authorization: token,
+    Authorization: `Bearer ${token}`,
   },
   paramsSerializer: (params) => queryString.stringify(params),
 });

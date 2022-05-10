@@ -1,17 +1,44 @@
-body {
-  overflow-x: hidden;
-  height: 100%;
-  position: relative;
-  max-width: 100%;
-  font-size: 1rem;
+:root {
+  --bs-blue: #1e88e5;
+  --bs-indigo: #6610f2;
+  --bs-purple: #7460ee;
+  --bs-pink: #e83e8c;
+  --bs-red: #fc4b6c;
+  --bs-orange: #fb8c00;
+  --bs-yellow: #ffb22b;
+  --bs-green: #26c6da;
+  --bs-teal: #20c997;
+  --bs-cyan: #4fc3f7;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #7460ee;
+  --bs-secondary: #6c757d;
+  --bs-success: #26c6da;
+  --bs-info: #1e88e5;
+  --bs-warning: #ffb22b;
+  --bs-danger: #fc4b6c;
+  --bs-light: #f2f6f8;
+  --bs-dark: #343a40;
+  --bs-cyan: #4fc3f7;
+  --bs-orange: #fb8c00;
+  --bs-purple: #7460ee;
+  --bs-font-sans-serif: "Poppins", sans-serif;
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+}
 
+body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  color: #3e5569;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #7e7e7e;
-  text-align: left;
-  background-color: #f9f9f9;
+  background-color: #eef5f9;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 html {
@@ -39,50 +66,11 @@ html {
   background: #007a64;
 }
 
-:root {
-  --blue: #5e72e4;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #ee3232;
-  --orange: #ff9900;
-  --yellow: #fffa6f;
-  --green: #297f00;
-  --teal: #20c997;
-  --cyan: #3065d0;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #007a64;
-  --secondary: #bda25c;
-  --success: #2bc155;
-  --info: #2d28ff;
-  --warning: #fe8024;
-  --danger: #ff2e2e;
-  --light: #f4f5f9;
-  --dark: #b1b1b1;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --breakpoint-xxl: 1440;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 a {
-  color: #007a64;
+  color: #3e5569;
   text-decoration: none;
-  background-color: transparent;
-}
-
-.ml-1,
-.mx-1 {
-  margin-left: 0.25rem !important;
 }
