@@ -1,17 +1,16 @@
 import React from 'react';
 import './HeaderFooterLayout.scss';
 
-import { Box } from '@mui/material';
-
-export const HeaderFooterLayout = ({ nav, header, children, footer }) => {
+export const HeaderFooterLayout = ({ sidebar, header, children, footer, page }) => {
   return (
     <div className="header-footer">
-      <div className="nav-layout">{nav}</div>
-      <Box className='box-layout'>
-        <div className="header-layout">{header}</div>
-        <div className="children-layout">{children}</div>
-        <div className="footer-layout">{footer}</div>
-      </Box>
+      <div className="header-layout">{header}</div>
+      <aside className="sidebar-layout">{sidebar}</aside>
+      <div className="children-layout">
+        <div className="page-breadcrumb-layout">{page}</div>
+        <div className="children-content">{children}</div>
+        <footer className="footer-layout">{footer}</footer>
+      </div>
     </div>
   );
 };
