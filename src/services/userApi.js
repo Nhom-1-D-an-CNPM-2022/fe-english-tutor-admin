@@ -1,17 +1,17 @@
-import axiosMy from './axiosMy';
+import adminAxios from "./adminAxios";
 
 const userApi = {
   getInfo: async () => {
     const url = `user/get-info`;
-    return await axiosMy.get(url);
+    return await adminAxios.get(url);
   },
   login: async (params) => {
     const url = `user/login`;
-    return await axiosMy.get(url, { params });
+    return await adminAxios.get(url, { params });
   },
   rigister: async (params) => {
     const url = `user/rigister`;
-    return await axiosMy.get(url, { params });
+    return await adminAxios.get(url, { params });
   },
 };
 

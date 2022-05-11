@@ -1,10 +1,10 @@
 import axios from 'axios';
 import queryString from 'query-string';
-const baseURL = process.env.REACT_APP_URL_MY_API;
+const basicURL = process.env.REACT_APP_URL_MY_API_BASIC;
 const token = localStorage.getItem('jwt');
 
-const axiosMy = axios.create({
-  baseURL: baseURL,
+const basicAxios = axios.create({
+  baseURL: basicURL,
   headers: {
     'content-type': 'application/json',
     Authorization: `Bearer ${token}`,
@@ -12,7 +12,7 @@ const axiosMy = axios.create({
   paramsSerializer: (params) => queryString.stringify(params),
 });
 
-axiosMy.interceptors.response.use(
+basicAxios.interceptors.response.use(
   (res) => {
     if (res.data.result === 0) {
       // logout(buildysURL + "");
@@ -27,4 +27,4 @@ axiosMy.interceptors.response.use(
   },
 );
 
-export default axiosMy;
+export default basicAxios;
