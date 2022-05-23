@@ -6,7 +6,7 @@ import { PublicRouter } from './PublicRouter';
 import { PrivateRouter } from './PrivateRouter';
 
 import { Header, Footer, Sidebar, PageBreadcrumb } from '../components';
-import { Home, Login } from '../containers';
+import { Home, Login, Tutor } from '../containers';
 
 export const Routers = () => {
   return (
@@ -31,6 +31,21 @@ export const Routers = () => {
           exact={true}
           path={'/login'}
           element={<PublicRouter component={Login} layout={BlankLayout} />}
+        />
+        <Route
+          exact={true}
+          path={'/manage-tutor'}
+          element={
+            <PrivateRouter
+              component={Tutor}
+              layout={HeaderFooterLayout}
+              header={Header}
+              footer={Footer}
+              sidebar={Sidebar}
+              page={PageBreadcrumb}
+              title="Quản lý gia sư"
+            />
+          }
         />
       </Routes>
     </BrowserRouter>

@@ -3,14 +3,45 @@ import './Sidebar.scss';
 
 import { Link } from 'react-router-dom';
 import { logout } from '../../../redux/slice/userSlice';
-import { useDispatch } from 'react-redux';
+import { updateNumber } from '../../../redux/slice/sidebarSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const Sidebar = () => {
   const clasName = 'sidebar';
   const dispatch = useDispatch();
+  const history = useNavigate();
+  const number = useSelector((state) => state.sidebarSlice.number);
+  const listTitle = [
+    {
+      title: 'Quản lý tài khoản',
+      url: '/',
+      icon: <i className="fa-solid fa-user-large"></i>,
+    },
+    {
+      title: 'Quản lý gia sư',
+      url: '/manage-tutor',
+      icon: <i className="fa-solid fa-chalkboard-user"></i>,
+    },
+    {
+      title: 'Tạo tài khoản admin',
+      url: '/',
+      icon: <i className="fa-solid fa-circle-plus"></i>,
+    },
+    {
+      title: 'Quản lý tài khoản admin',
+      url: '/',
+      icon: <i className="fa-solid fa-a" />,
+    },
+  ];
 
   const handleLogout = () => {
     dispatch(logout());
+  };
+
+  const handleClick = (index, url) => {
+    dispatch(updateNumber({ number: index }));
+    history(url);
   };
 
   return (
@@ -18,24 +49,20 @@ export const Sidebar = () => {
       <div className={`${clasName}__content`}>
         <nav className={`${clasName}__body`}>
           <ul className={`${clasName}__lists`}>
-            <li className={`${clasName}__item`}>
-              <Link to="/" className={`${clasName}__link ${clasName}__select`}>
-                <i className="fa-solid fa-user-large"></i>
-                <span className={`${clasName}__text`}>Quản lý tài khoản</span>
-              </Link>
-            </li>
-            <li className={`${clasName}__item`}>
-              <Link to="/" className={`${clasName}__link`}>
-                <i className="fa-solid fa-circle-plus"></i>
-                <span className={`${clasName}__text`}>Tạo tài khoản admin</span>
-              </Link>
-            </li>
-            <li className={`${clasName}__item`}>
-              <Link to="/" className={`${clasName}__link`}>
-                <i className="fa-solid fa-a" />
-                <span className={`${clasName}__text`}>Quản lý tài khoản admin</span>
-              </Link>
-            </li>
+            {listTitle.length !== 0 &&
+              listTitle.map((item, index) => {
+                return (
+                  <li className={`${clasName}__item`}>
+                    <div
+                      className={`${clasName}__link ${number === index ? 'sidebar__select' : ''}`}
+                      onClick={() => handleClick(index, item.url)}
+                    >
+                      {item.icon}
+                      <span className={`${clasName}__text`}>{item.title}</span>
+                    </div>
+                  </li>
+                );
+              })}
           </ul>
 
           <div className={`${clasName}__footer`}>

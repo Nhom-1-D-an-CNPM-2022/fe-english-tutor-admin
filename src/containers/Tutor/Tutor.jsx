@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Home.scss';
+import './Tutor.scss';
 
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -11,10 +11,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
 import Fab from '@mui/material/Fab';
-import KeyIcon from '@mui/icons-material/Key';
-import KeyOffIcon from '@mui/icons-material/KeyOff';
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
-import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ClearIcon from '@mui/icons-material/Clear';
 
 import manageUserApi from '../../services/manageUserApi';
 import { toast } from 'react-toastify';
@@ -39,23 +37,23 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export const Home = () => {
-  const [listUser, setListUser] = useState([]);
+export const Tutor = () => {
+  const [listTutors, setListTutors] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
 
-  const getListUser = async (number, page) => {
-    const listUser = await manageUserApi.getAllUser({ number: number, page: page * 10 });
-    setListUser(listUser.data);
+  const getListTutors = async (number, page) => {
+    const listTutors = await manageUserApi.getListTutors({ number: number, page: page * 10 });
+    setListTutors(listTutors.data);
   };
 
   const getTotalPage = async () => {
-    const totalPage = await manageUserApi.getAllUser({ number: 0, page: 0 });
+    const totalPage = await manageUserApi.getListTutors({ number: 0, page: 0 });
     setTotalPage(totalPage.data.length);
   };
 
   useEffect(() => {
-    getListUser(10, currentPage);
+    getListTutors(10, currentPage);
   }, [currentPage]);
 
   useEffect(() => {
@@ -68,13 +66,13 @@ export const Home = () => {
 
   const handleBlock = async (_id, status, id) => {
     const dataUpdate = {
-      isActive: !status,
+      isVerified: !status,
     };
 
-    const statusUpdate = await manageUserApi.updateAccount({ _id: _id, dataUpdate: dataUpdate });
+    const statusUpdate = await manageUserApi.updateTutor({ _id: _id, dataUpdate: dataUpdate });
 
-    if (statusUpdate.data.data) {
-      toast.success('Cập nhật tài khoản thành công!!!', {
+    if (statusUpdate.data) {
+      toast.success('Phê duyệt gia sư thành công!!!', {
         position: 'bottom-left',
         autoClose: 3000,
         hideProgressBar: false,
@@ -84,11 +82,11 @@ export const Home = () => {
         progress: undefined,
       });
 
-      const listUserTemp = listUser;
-      listUserTemp[id].isActive = !status;
-      setListUser([...[], ...listUserTemp]);
+      const listTutorsTemp = listTutors;
+      listTutorsTemp[id].isVerified = !status;
+      setListTutors([...[], ...listTutorsTemp]);
     } else {
-      toast.warn('Cập nhật tài khoản thất bại!!!', {
+      toast.warn('Phê duyệt gia sư thất bại!!!', {
         position: 'bottom-left',
         autoClose: 3000,
         hideProgressBar: false,
@@ -109,32 +107,24 @@ export const Home = () => {
               <StyledTableCell align="center">STT</StyledTableCell>
               <StyledTableCell align="center">Email</StyledTableCell>
               <StyledTableCell align="center">Họ Tên</StyledTableCell>
-              <StyledTableCell align="center">Loại Tài Khoản</StyledTableCell>
               <StyledTableCell align="center">Chức Năng</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {listUser.length !== 0 &&
-              listUser.map((row, index) => (
+            {listTutors.length !== 0 &&
+              listTutors.map((row, index) => (
                 <StyledTableRow key={index}>
                   <StyledTableCell align="center">{currentPage * 10 + index + 1}</StyledTableCell>
                   <StyledTableCell align="center">{row.email}</StyledTableCell>
                   <StyledTableCell align="center">{row.fullname}</StyledTableCell>
                   <StyledTableCell align="center">
-                    {row.type === 'tutor' ? 'Gia Sư' : 'Học Viên'}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
                     <Fab
                       size="small"
                       color="primary"
-                      aria-label="block"
-                      sx={{ marginRight: '4px' }}
-                      onClick={() => handleBlock(row._id, row.isActive, index)}
+                      aria-label="up"
+                      onClick={() => handleBlock(row._id, row.isVerified, index)}
                     >
-                      {row.isActive ? <KeyIcon /> : <KeyOffIcon />}
-                    </Fab>
-                    <Fab size="small" color="primary" aria-label="up">
-                      {row.type === 'tutor' ? <ArrowCircleDownIcon /> : <ArrowCircleUpIcon />}
+                      {row.isVerified ? <ClearIcon /> : <CheckCircleIcon />}
                     </Fab>
                   </StyledTableCell>
                 </StyledTableRow>
@@ -142,8 +132,8 @@ export const Home = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      {totalPage !== 0 && (
-        <div className="home__pagination">
+      {totalPage > 10 && (
+        <div className="tutor__pagination">
           <Pagination
             count={(totalPage - (totalPage % 10)) / 10}
             page={currentPage + 1}
