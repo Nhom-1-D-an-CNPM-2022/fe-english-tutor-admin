@@ -44,7 +44,7 @@ export const Tutor = () => {
 
   const getListTutors = async (number, page) => {
     const listTutors = await manageUserApi.getListTutors({ number: number, page: page * 10 });
-    setListTutors(listTutors.data);
+    setListTutors(listTutors.data.map((tutor) => tutor.userId));
   };
 
   const getTotalPage = async () => {
@@ -64,12 +64,12 @@ export const Tutor = () => {
     setCurrentPage(value - 1);
   };
 
-  const handleBlock = async (_id, status, id) => {
+  const handleBlock = async (tutorId, status, id) => {
     const dataUpdate = {
-      isVerified: !status,
+      status: 'approved',
     };
 
-    const statusUpdate = await manageUserApi.updateTutor({ _id: _id, dataUpdate: dataUpdate });
+    const statusUpdate = await manageUserApi.approveTutor({ tutorId, dataUpdate });
 
     if (statusUpdate.data) {
       toast.success('Phê duyệt gia sư thành công!!!', {

@@ -11,11 +11,11 @@ const manageUserApi = {
     return await adminAxios.patch(url, requestOption);
   },
   getListTutors: async (params) => {
-    const url = `users/get-tutors`;
+    const url = `tutors/get-reviewed-profiles`;
     return await basicAxios.get(url, { params });
   },
-  updateTutor: async (requestOption) => {
-    const url = `users/update`;
+  approveTutor: async (requestOption) => {
+    const url = `tutors/approve-profile`;
     return await basicAxios.put(url, requestOption);
   },
 };
