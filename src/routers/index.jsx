@@ -6,7 +6,7 @@ import { PublicRouter } from './PublicRouter';
 import { PrivateRouter } from './PrivateRouter';
 
 import { Header, Footer, Sidebar, PageBreadcrumb } from '../components';
-import { Home, Login, Tutor } from '../containers';
+import { Home, Login, Tutor, TutorProfile } from '../containers';
 
 export const Routers = () => {
   return (
@@ -44,6 +44,20 @@ export const Routers = () => {
               sidebar={Sidebar}
               page={PageBreadcrumb}
               title="Quản lý gia sư"
+            />
+          }
+        />
+        <Route
+          exact={true}
+          path={'/manage-tutor/1'}
+          element={
+            <PublicRouter
+              component={TutorProfile}
+              layout={HeaderFooterLayout}
+              header={Header}
+              footer={Footer}
+              sidebar={Sidebar}
+              page={PageBreadcrumb}
             />
           }
         />

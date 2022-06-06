@@ -23,8 +23,9 @@
   --bs-cyan: #4fc3f7;
   --bs-orange: #fb8c00;
   --bs-purple: #7460ee;
-  --bs-font-sans-serif: "Poppins", sans-serif;
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-font-sans-serif: 'Poppins', sans-serif;
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
@@ -32,7 +33,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   color: #3e5569;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
@@ -67,10 +68,19 @@ html {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 a {
   color: #3e5569;
   text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
 }
