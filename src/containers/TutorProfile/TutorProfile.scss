@@ -91,12 +91,12 @@ h3 {
     padding: 1.5rem 0;
 
     &__title {
-      font-size: var(--tutor-profile-h2-font-size);
-      color: var(--tutor-profile-title-color);
-      font-weight: var(--tutor-profile-font-semi-bold);
-      text-transform: uppercase;
-      letter-spacing: 0.25rem;
-      margin-bottom: var(--tutor-profile-mb-3);
+      font-size: var(--tutor-profile-h2-font-size) !important;
+      color: var(--tutor-profile-title-color) !important;
+      font-weight: var(--tutor-profile-font-semi-bold) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.25rem !important;
+      margin-bottom: var(--tutor-profile-mb-3) !important;
     }
   }
 
@@ -121,7 +121,7 @@ h3 {
     }
 
     &__title {
-      font-size: var(--tutor-profile-h1-font-size);
+      font-size: var(--tutor-profile-h1-font-size) !important;
     }
 
     &__profession {
@@ -140,15 +140,21 @@ h3 {
 
       &__icon {
         font-size: 1.2rem;
-        margin-right: 0.25rem;
+        margin-right: 0.5rem;
       }
     }
   }
 
   &__about_me,
-  &__motivation {
+  &__motivation,
+  &__reference,
+  &__teaching_style,
+  &__education,
+  &__experience {
     &__description {
-      font-size: var(--tutor-profile-normal-font-size);
+      font-size: var(--tutor-profile-normal-font-size) !important;
+      white-space: pre-line;
+      word-wrap: break-word;
     }
   }
 
@@ -166,8 +172,8 @@ h3 {
     &__rounder {
       position: relative;
       display: block;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       background-color: var(--tutor-profile-text-color-light);
       border-radius: 50%;
       margin-top: 0.25rem;
@@ -178,7 +184,7 @@ h3 {
       width: 2px;
       height: 110%;
       background-color: var(--tutor-profile-text-color-light);
-      transform: translate(7px, 0);
+      transform: translate(6px, 0);
     }
 
     &__data {
@@ -186,48 +192,30 @@ h3 {
     }
 
     &__title {
-      font-size: var(--tutor-profile-h3-font-size);
-      font-weight: 700;
-      text-transform: uppercase;
+      font-size: var(--tutor-profile-h3-font-size) !important;
+      font-weight: 700 !important;
     }
 
     &__tags {
-      color: var(--tutor-profile-tags-color);
-      font-weight: 700;
-    }
-
-    &__description {
-      font-size: var(--tutor-profile-normal-font-size);
+      font-size: var(--tutor-profile-normal-font-size) !important;
+      font-weight: 700 !important;
+      color: var(--tutor-profile-tags-color) !important;
+      margin-bottom: 0.125rem !important;
     }
   }
 
-  &__languages {
+  &__languages,
+  &__certificates {
     &__content {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-  }
 
-  &__certificates {
     &__data {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0 !important;
-    }
-
-    &__name {
-      display: flex;
-      align-items: center;
-      margin-bottom: var(--tutor-profile-mb-3);
-    }
-
-    &__circle {
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      background-color: var(--tutor-profile-text-color);
-      border-radius: 50%;
-      margin-right: 0.75rem;
+      & span {
+        word-wrap: break-word;
+      }
     }
   }
 
@@ -250,7 +238,7 @@ h3 {
       content: '';
       position: absolute;
       width: 50%;
-      height: 0.1rem;
+      height: 2px;
       background-color: var(--tutor-profile-text-color-light);
       border-radius: 12px;
       right: 0;

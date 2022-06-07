@@ -49,9 +49,9 @@ export const Routers = () => {
         />
         <Route
           exact={true}
-          path={'/manage-tutor/1'}
+          path={'/manage-tutor/profile/:id'}
           element={
-            <PublicRouter
+            <PrivateRouter
               component={TutorProfile}
               layout={HeaderFooterLayout}
               header={Header}

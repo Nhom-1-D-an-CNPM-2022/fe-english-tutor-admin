@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Tutor.scss';
-
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,6 +12,8 @@ import Pagination from '@mui/material/Pagination';
 import Fab from '@mui/material/Fab';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ClearIcon from '@mui/icons-material/Clear';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import './Tutor.scss';
 
 import manageUserApi from '../../services/manageUserApi';
 import { toast } from 'react-toastify';
@@ -38,13 +39,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export const Tutor = () => {
+  const navigate = useNavigate();
   const [listTutors, setListTutors] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
 
   const getListTutors = async (number, page) => {
-    const listTutors = await manageUserApi.getListTutors({ number: number, page: page * 10 });
-    setListTutors(listTutors.data.map((tutor) => tutor.userId));
+    const response = await manageUserApi.getListTutors({ number: number, page: page * 10 });
+    setListTutors(response.data);
   };
 
   const getTotalPage = async () => {
@@ -98,6 +100,10 @@ export const Tutor = () => {
     }
   };
 
+  const handleGoToTutorProfile = (index) => {
+    navigate(`/manage-tutor/profile/${listTutors[index]._id}`, { replace: true });
+  };
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -107,7 +113,7 @@ export const Tutor = () => {
               <StyledTableCell align="center">STT</StyledTableCell>
               <StyledTableCell align="center">Email</StyledTableCell>
               <StyledTableCell align="center">Họ Tên</StyledTableCell>
-              <StyledTableCell align="center">Chức Năng</StyledTableCell>
+              <StyledTableCell align="center">Xem hồ sơ</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -122,9 +128,9 @@ export const Tutor = () => {
                       size="small"
                       color="primary"
                       aria-label="up"
-                      onClick={() => handleBlock(row._id, row.isVerified, index)}
+                      onClick={() => handleGoToTutorProfile(index)}
                     >
-                      {row.isVerified ? <ClearIcon /> : <CheckCircleIcon />}
+                      <ArrowForwardIcon />
                     </Fab>
                   </StyledTableCell>
                 </StyledTableRow>
