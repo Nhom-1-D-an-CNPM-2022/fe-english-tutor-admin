@@ -1,12 +1,40 @@
-import basicAxios from './basicAxios';
+import adminAxios from './adminAxios';
 
 const tutorProfileApi = {
   getProfile: async (tutorId) => {
-    const url = `tutors/profile/${tutorId}`;
-    return await basicAxios.get(url);
+    const url = `tutor/profile/${tutorId}`;
+    return await adminAxios.get(url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    });
   },
 
-  updateProfile: async (tutorId) => {},
+  approveProfile: async (tutorId) => {
+    const url = `tutor/profile/approve/${tutorId}`;
+    return await adminAxios.put(
+      url,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        },
+      },
+    );
+  },
+
+  rejectProfile: async (tutorId) => {
+    const url = `tutor/profile/reject/${tutorId}`;
+    return await adminAxios.put(
+      url,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        },
+      },
+    );
+  },
 };
 
 export default tutorProfileApi;

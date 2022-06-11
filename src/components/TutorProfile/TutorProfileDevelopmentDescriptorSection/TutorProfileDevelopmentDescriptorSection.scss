@@ -1,0 +1,50 @@
+.tutor_profile__development {
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__time {
+    padding-right: 1rem;
+  }
+
+  &__rounder {
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: var(--tutor-profile-text-color-light);
+    border-radius: 50%;
+    margin-top: 0.25rem;
+  }
+
+  &__line {
+    display: block;
+    width: 2px;
+    height: calc(100% + 4px);
+    background-color: var(--tutor-profile-text-color-light);
+    transform: translate(6px, 0);
+  }
+
+  &__data {
+    display: flex;
+  }
+
+  &__title {
+    font-size: var(--tutor-profile-h3-font-size) !important;
+    font-weight: 700 !important;
+  }
+
+  &__tags {
+    font-size: var(--tutor-profile-normal-font-size) !important;
+    font-weight: 700 !important;
+    color: var(--tutor-profile-tags-color) !important;
+    margin-bottom: 0.125rem !important;
+  }
+
+  &__description {
+    font-size: var(--tutor-profile-normal-font-size) !important;
+    white-space: pre-line;
+    word-wrap: break-word;
+  }
+}

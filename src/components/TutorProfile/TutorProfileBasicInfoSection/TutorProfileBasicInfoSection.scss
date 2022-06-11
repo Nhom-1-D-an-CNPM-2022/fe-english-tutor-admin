@@ -1,0 +1,44 @@
+.tutor_profile__basic_info {
+  position: relative;
+
+  &__container {
+    gap: 1.5rem;
+  }
+
+  &__data {
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  &__img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    justify-self: center;
+    margin-bottom: var(--tutor-profile-mb-1);
+  }
+
+  &__title {
+    font-size: var(--tutor-profile-h1-font-size) !important;
+  }
+
+  &__profession {
+    font-size: var(--tutor-profile-normal-font-size);
+    margin-bottom: var(--tutor-profile-mb-1);
+  }
+
+  &__address {
+    gap: 1rem;
+  }
+
+  &__information {
+    display: flex;
+    align-items: center;
+    font-size: var(--tutor-profile-small-font-size);
+
+    &__icon {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+  }
+}

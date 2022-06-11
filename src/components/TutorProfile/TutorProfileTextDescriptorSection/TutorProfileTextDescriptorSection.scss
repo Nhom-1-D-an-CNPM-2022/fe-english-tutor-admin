@@ -1,0 +1,7 @@
+.tutor_profile__text_descriptor {
+  &__description {
+    font-size: var(--tutor-profile-normal-font-size) !important;
+    white-space: pre-line;
+    word-wrap: break-word;
+  }
+}

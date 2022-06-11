@@ -1,0 +1,9 @@
+.tutor_profile__other_platforms {
+  &__content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__data {
+    margin-right: 0;
+  }
+}

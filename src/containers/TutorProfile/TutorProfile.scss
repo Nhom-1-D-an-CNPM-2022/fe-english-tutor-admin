@@ -19,6 +19,7 @@
 
   --tutor-profile-font-medium: 500;
   --tutor-profile-font-semi-bold: 600;
+  --tutor-profile-font-bold: 700;
 
   --tutor-profile-mb-1: 0.5rem;
   --tutor-profile-mb-2: 1rem;
@@ -37,14 +38,18 @@ h3 {
 
 .tutor_profile {
   &__button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     border: 2px solid var(--tutor-profile-text-color);
     color: var(--tutor-profile-title-color);
-    padding: 1rem 2rem;
+    padding: 1rem 1.25rem;
     border-radius: 0.25rem;
-    transition: 0.3s;
-    font-weight: var(--tutor-profile-font-medium);
+    transition: background-color 0.2s;
+    font-size: var(--tutor-profile-normal-font-size);
+    font-weight: var(--tutor-profile-font-bold);
+    text-transform: uppercase;
     margin-top: var(--tutor-profile-mb-3);
+    cursor: pointer;
 
     &:hover {
       background-color: var(--tutor-profile-text-color);
@@ -100,110 +105,6 @@ h3 {
     }
   }
 
-  &__home {
-    position: relative;
-
-    &__container {
-      gap: 1.5rem;
-    }
-
-    &__data {
-      gap: 0.5rem;
-      text-align: center;
-    }
-
-    &__img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      justify-self: center;
-      margin-bottom: var(--tutor-profile-mb-1);
-    }
-
-    &__title {
-      font-size: var(--tutor-profile-h1-font-size) !important;
-    }
-
-    &__profession {
-      font-size: var(--tutor-profile-normal-font-size);
-      margin-bottom: var(--tutor-profile-mb-1);
-    }
-
-    &__address {
-      gap: 1rem;
-    }
-
-    &__information {
-      display: flex;
-      align-items: center;
-      font-size: var(--tutor-profile-small-font-size);
-
-      &__icon {
-        font-size: 1.2rem;
-        margin-right: 0.5rem;
-      }
-    }
-  }
-
-  &__about_me,
-  &__motivation,
-  &__reference,
-  &__teaching_style,
-  &__education,
-  &__experience {
-    &__description {
-      font-size: var(--tutor-profile-normal-font-size) !important;
-      white-space: pre-line;
-      word-wrap: break-word;
-    }
-  }
-
-  &__education,
-  &__experience {
-    &__content {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    &__time {
-      padding-right: 1rem;
-    }
-
-    &__rounder {
-      position: relative;
-      display: block;
-      width: 14px;
-      height: 14px;
-      background-color: var(--tutor-profile-text-color-light);
-      border-radius: 50%;
-      margin-top: 0.25rem;
-    }
-
-    &__line {
-      display: block;
-      width: 2px;
-      height: 110%;
-      background-color: var(--tutor-profile-text-color-light);
-      transform: translate(6px, 0);
-    }
-
-    &__data {
-      display: flex;
-    }
-
-    &__title {
-      font-size: var(--tutor-profile-h3-font-size) !important;
-      font-weight: 700 !important;
-    }
-
-    &__tags {
-      font-size: var(--tutor-profile-normal-font-size) !important;
-      font-weight: 700 !important;
-      color: var(--tutor-profile-tags-color) !important;
-      margin-bottom: 0.125rem !important;
-    }
-  }
-
   &__languages,
   &__certificates {
     &__content {
@@ -219,13 +120,10 @@ h3 {
     }
   }
 
-  &__other_platforms {
+  &__decision {
     &__content {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    &__data {
-      margin-right: 0;
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

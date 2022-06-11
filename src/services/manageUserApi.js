@@ -14,10 +14,6 @@ const manageUserApi = {
     const url = `tutors/get-reviewed-profiles`;
     return await basicAxios.get(url, { params });
   },
-  approveTutor: async (requestOption) => {
-    const url = `tutors/approve-profile`;
-    return await basicAxios.put(url, requestOption);
-  },
 };
 
 export default manageUserApi;
