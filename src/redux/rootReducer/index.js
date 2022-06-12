@@ -2,16 +2,16 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import userSlice from '../slice/userSlice';
+import authSlice from '../slice/authSlice';
 import sidebarSlice from '../slice/sidebarSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['userSlice'],
+  whitelist: ['authSlice'],
 };
 const rootReducer = combineReducers({
-  userSlice,
+  authSlice,
   sidebarSlice,
 });
 

@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/slice/userSlice';
+import { login } from '../../redux/slice/authSlice';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -38,7 +38,7 @@ export const Login = () => {
         draggable: true,
         progress: undefined,
       });
-      
+
       navigate('/');
     } else {
       toast.warn('Đăng nhập thất bại!!!', {

@@ -2,7 +2,7 @@ import adminAxios from './adminAxios';
 
 const tutorProfileApi = {
   getProfile: async (tutorId) => {
-    const url = `tutor/profile/${tutorId}`;
+    const url = `tutors/profile/${tutorId}`;
     return await adminAxios.get(url, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -11,7 +11,7 @@ const tutorProfileApi = {
   },
 
   approveProfile: async (tutorId) => {
-    const url = `tutor/profile/approve/${tutorId}`;
+    const url = `tutors/profile/approve/${tutorId}`;
     return await adminAxios.put(
       url,
       {},
@@ -24,7 +24,7 @@ const tutorProfileApi = {
   },
 
   rejectProfile: async (tutorId) => {
-    const url = `tutor/profile/reject/${tutorId}`;
+    const url = `tutors/profile/reject/${tutorId}`;
     return await adminAxios.put(
       url,
       {},

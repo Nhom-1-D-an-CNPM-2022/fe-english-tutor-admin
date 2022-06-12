@@ -44,18 +44,21 @@ export const Tutor = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
 
-  const getListTutors = async (number, page) => {
-    const response = await manageUserApi.getListTutors({ number: number, page: page * 10 });
+  const getAllReviewedTutorProfiles = async (number, page) => {
+    const response = await manageUserApi.getAllReviewedTutorProfiles({
+      number: number,
+      page: page * 10,
+    });
     setListTutors(response.data);
   };
 
   const getTotalPage = async () => {
-    const totalPage = await manageUserApi.getListTutors({ number: 0, page: 0 });
+    const totalPage = await manageUserApi.getAllReviewedTutorProfiles({ number: 0, page: 0 });
     setTotalPage(totalPage.data.length);
   };
 
   useEffect(() => {
-    getListTutors(10, currentPage);
+    getAllReviewedTutorProfiles(10, currentPage);
   }, [currentPage]);
 
   useEffect(() => {

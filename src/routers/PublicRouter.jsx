@@ -12,7 +12,7 @@ export const PublicRouter = ({
   page: Page,
   title,
 }) => {
-  const isAccount = useSelector((state) => state.userSlice.isAccount);
+  const isAccount = useSelector((state) => state.authSlice.isAccount);
 
   if (!isAccount) {
     return (

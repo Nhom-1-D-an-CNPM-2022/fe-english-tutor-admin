@@ -6,9 +6,7 @@ import { useSelector } from 'react-redux';
 
 export const Header = () => {
   const className = 'header';
-  const account = useSelector((state) => state.userSlice.account);
-
-  console.log(account);
+  const account = useSelector((state) => state.authSlice.account);
 
   return (
     <header className={className}>

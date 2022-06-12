@@ -2,7 +2,7 @@ import React from 'react';
 import './Sidebar.scss';
 
 import { Link } from 'react-router-dom';
-import { logout } from '../../../redux/slice/userSlice';
+import { logout } from '../../../redux/slice/authSlice';
 import { updateNumber } from '../../../redux/slice/sidebarSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +19,7 @@ export const Sidebar = () => {
       icon: <i className="fa-solid fa-user-large"></i>,
     },
     {
-      title: 'Quản lý gia sư',
+      title: 'Quản lý hồ sơ xét duyệt gia sư',
       url: '/manage-tutor',
       icon: <i className="fa-solid fa-chalkboard-user"></i>,
     },

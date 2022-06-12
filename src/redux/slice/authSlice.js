@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import userApi from '../../services/userApi';
+import authApi from '../../services/authApi';
 
-export const login = createAsyncThunk('user/login', async (params) => {
-  return await userApi.login(params).then((res) => res.data);
+export const login = createAsyncThunk('auth/login', async (params) => {
+  return await authApi.login(params).then((res) => res.data);
 });
-export const getInfo = createAsyncThunk('user/get-info', async (params) => {
-  return await userApi.getInfo().then((res) => res.data);
+export const getInfo = createAsyncThunk('auth/get-info', async (params) => {
+  return await authApi.getInfo().then((res) => res.data);
 });
 
 const initialState = {
@@ -15,8 +15,8 @@ const initialState = {
   message: '',
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const authSlice = createSlice({
+  name: 'auth',
   initialState: initialState,
   reducers: {
     logout(state) {
@@ -52,6 +52,6 @@ export const userSlice = createSlice({
   },
 });
 
-const { reducer, actions } = userSlice;
+const { reducer, actions } = authSlice;
 export const { logout } = actions;
 export default reducer;

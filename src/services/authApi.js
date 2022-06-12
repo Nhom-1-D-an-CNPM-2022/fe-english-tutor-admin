@@ -1,18 +1,18 @@
-import adminAxios from "./adminAxios";
+import adminAxios from './adminAxios';
 
-const userApi = {
+const authApi = {
   getInfo: async () => {
-    const url = `user/get-info`;
+    const url = `auth/get-info`;
     return await adminAxios.get(url);
   },
   login: async (params) => {
-    const url = `user/login`;
+    const url = `auth/login`;
     return await adminAxios.get(url, { params });
   },
   rigister: async (params) => {
-    const url = `user/rigister`;
+    const url = `auth/register`;
     return await adminAxios.get(url, { params });
   },
 };
 
-export default userApi;
+export default authApi;

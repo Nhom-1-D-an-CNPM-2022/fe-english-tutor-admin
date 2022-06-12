@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { getInfo } from '../redux/slice/userSlice';
+import { getInfo } from '../redux/slice/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 
@@ -18,25 +18,26 @@ export const PrivateRouter = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation().pathname;
-  const [isFetch, setIsFectch] = useState(false);
-  const isAccount = useSelector((state) => state.userSlice.isAccount);
-  const fecthInfo = async () => {
-    const check = (await dispatch(getInfo())).payload;
-
-    if (
-      check === true ||
-      check === false ||
-      String(typeof check) === 'object' ||
-      check === undefined
-    ) {
-      setIsFectch(true);
-    }
-  };
+  const [isFetch, setIsFetch] = useState(false);
+  const isAccount = useSelector((state) => state.authSlice.isAccount);
 
   useEffect(() => {
-    fecthInfo();
+    const fetchInfo = async () => {
+      const check = (await dispatch(getInfo())).payload;
+
+      if (
+        check === true ||
+        check === false ||
+        String(typeof check) === 'object' ||
+        check === undefined
+      ) {
+        setIsFetch(true);
+      }
+    };
+
+    fetchInfo();
     return;
-  }, [location]);
+  }, [location, dispatch]);
 
   const render = () => {
     if (isAccount === false) {

@@ -45,12 +45,12 @@ export const Home = () => {
   const [totalPage, setTotalPage] = useState(0);
 
   const getListUser = async (number, page) => {
-    const listUser = await manageUserApi.getAllUser({ number: number, page: page * 10 });
+    const listUser = await manageUserApi.getAllUsers({ number: number, page: page * 10 });
     setListUser(listUser.data);
   };
 
   const getTotalPage = async () => {
-    const totalPage = await manageUserApi.getAllUser({ number: 0, page: 0 });
+    const totalPage = await manageUserApi.getAllUsers({ number: 0, page: 0 });
     setTotalPage(totalPage.data.length);
   };
 
@@ -73,7 +73,7 @@ export const Home = () => {
 
     const statusUpdate = await manageUserApi.updateAccount({ _id: _id, dataUpdate: dataUpdate });
 
-    if (statusUpdate.data.data) {
+    if (statusUpdate.status === 200) {
       toast.success('Cập nhật tài khoản thành công!!!', {
         position: 'bottom-left',
         autoClose: 3000,

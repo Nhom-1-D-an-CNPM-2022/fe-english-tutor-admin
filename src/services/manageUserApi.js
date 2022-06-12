@@ -1,18 +1,17 @@
-import basicAxios from './basicAxios';
 import adminAxios from './adminAxios';
 
 const manageUserApi = {
-  getAllUser: async (params) => {
-    const url = `users/get-all`;
-    return await basicAxios.get(url, { params });
+  getAllUsers: async (params) => {
+    const url = 'users/';
+    return await adminAxios.get(url, { params });
   },
   updateAccount: async (requestOption) => {
-    const url = `account/update`;
-    return await adminAxios.patch(url, requestOption);
+    const url = `users/account/update/${requestOption._id}`;
+    return await adminAxios.put(url, requestOption);
   },
-  getListTutors: async (params) => {
-    const url = `tutors/get-reviewed-profiles`;
-    return await basicAxios.get(url, { params });
+  getAllReviewedTutorProfiles: async (params) => {
+    const url = 'tutors/profile/';
+    return await adminAxios.get(url, { params });
   },
 };
 
