@@ -1,6 +1,7 @@
 import { Box, Chip, CircularProgress, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import tutorProfileApi from '../../services/tutorProfileApi';
 import {
   TutorProfileBasicInfoSection,
@@ -14,6 +15,7 @@ import './TutorProfile.scss';
 
 export function TutorProfile() {
   const [profile, setProfile] = useState();
+  const [status, setStatus] = useState();
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,8 +23,17 @@ export function TutorProfile() {
       try {
         const response = await tutorProfileApi.getProfile(id);
         setProfile(response.data);
+        setStatus(response.data.status);
       } catch (error) {
-        console.log(error);
+        toast.error(error, {
+          position: 'bottom-left',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     };
 
@@ -35,10 +46,58 @@ export function TutorProfile() {
 
   const handleApproveProfile = async () => {
     const result = await tutorProfileApi.approveProfile(id);
+
+    if (result.status === 200) {
+      toast.success('Approve tutor profile successfully!!!', {
+        position: 'bottom-left',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      setStatus('approved');
+    } else {
+      toast.success('Approve tutor profile unsuccessfully!!!', {
+        position: 'bottom-left',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const handleRejectProfile = async () => {
     const result = await tutorProfileApi.rejectProfile(id);
+
+    if (result.status === 200) {
+      toast.success('Reject tutor profile successfully!!!', {
+        position: 'bottom-left',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      setStatus('rejected');
+    } else {
+      toast.success('Reject tutor profile unsuccessfully!!!', {
+        position: 'bottom-left',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   return profile ? (
@@ -97,6 +156,16 @@ export function TutorProfile() {
               handleApproveProfile={handleApproveProfile}
               handleRejectProfile={handleRejectProfile}
             />
+          )}
+          {status === 'approved' && (
+            <Box width="200px" marginX="auto">
+              <img src="/assets/images/tutor-profile/approved-stamp.png" />
+            </Box>
+          )}
+          {status === 'rejected' && (
+            <Box width="200px" marginX="auto">
+              <img src="/assets/images/tutor-profile/rejected-stamp.png" />
+            </Box>
           )}
         </Box>
         <Box className="tutor_profile__main__right">
