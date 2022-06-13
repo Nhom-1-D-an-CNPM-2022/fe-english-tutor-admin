@@ -151,7 +151,7 @@ export function TutorProfile() {
           {/* OTHER PLATFORMS */}
           <TutorProfileOtherPlatformsSection data={profile.otherPlatforms} />
           {/* DECISION  */}
-          {profile.status === 'reviewed' && (
+          {status === 'reviewed' && (
             <TutorProfileDecisionSection
               handleApproveProfile={handleApproveProfile}
               handleRejectProfile={handleRejectProfile}
