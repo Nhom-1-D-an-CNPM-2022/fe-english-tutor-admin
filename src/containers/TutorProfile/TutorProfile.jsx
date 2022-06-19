@@ -45,7 +45,7 @@ export function TutorProfile() {
   };
 
   const handleApproveProfile = async () => {
-    const result = await tutorProfileApi.approveProfile(id);
+    const result = await tutorProfileApi.approveProfile(profile.userId._id);
 
     if (result.status === 200) {
       toast.success('Approve tutor profile successfully!!!', {
@@ -73,7 +73,7 @@ export function TutorProfile() {
   };
 
   const handleRejectProfile = async () => {
-    const result = await tutorProfileApi.rejectProfile(id);
+    const result = await tutorProfileApi.rejectProfile(profile.userId._id);
 
     if (result.status === 200) {
       toast.success('Reject tutor profile successfully!!!', {
